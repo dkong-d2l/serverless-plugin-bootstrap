@@ -350,7 +350,7 @@ module.exports = class BootstrapPlugin {
       if (e.statusCode === 404) {
         return true;
       }
-      if (e.providerError && e.providerError.statusCode === 404) {
+      if (e.error && e.error.providerError && e.error.providerError.statusCode === 404) {
         return true;
       }
       throw new Error('AWS Request Error determining if bootstrap resources bucket exists');
@@ -391,7 +391,7 @@ module.exports = class BootstrapPlugin {
         if (e.statusCode === 404) {
           return true;
         }
-        if (e.providerError && e.providerError.statusCode === 404) {
+        if (e.error && e.error.providerError && e.error.providerError.statusCode === 404) {
           return true;
         }
         throw new Error('AWS Request Error determining if bootstrap resource already uploaded');
